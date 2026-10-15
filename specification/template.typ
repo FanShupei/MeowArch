@@ -72,9 +72,10 @@
   date: none,
   license: none,
   bibliography: none,
+  revision-history: none,
   body,
 ) = {
-  set document(title: title, author: author)
+  set document(title: title, author: author, date: date)
   set page(paper: "a4")
 
   set text(font: font-text, size: 12pt, weight: "regular")
@@ -92,6 +93,18 @@
   show heading.where(level: 1): set heading(supplement: "Part")
   show heading.where(level: 2): set heading(supplement: "Chapter")
 
+  if revision-history != none {
+    set heading(numbering: none, supplement: none)
+    show heading.where(level: 1): set block(below: 15pt)
+    show heading.where(level: 2): set heading(outlined: false)
+    show heading.where(level: 2): set text(size: 12pt, weight: "bold")
+    show heading.where(level: 2): set block(above: 1em, below: 0.5em)
+
+    revision-history
+
+    pagebreak()
+  }
+
   context {
     show outline.entry.where(level: 1): set block(above: par.spacing)
     show outline.entry.where(level: 1): set text(weight: "medium")
@@ -105,6 +118,7 @@
   show ref: set text(fill: blue)
   show link: set text(fill: blue)
 
+  set table(stroke: 0.5pt)
   set figure(numbering: figure-numbering.with("1.1"))
   show figure.caption: set text(size: 10pt)
   show figure.where(kind: table): set figure.caption(position: top)

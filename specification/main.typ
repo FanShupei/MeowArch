@@ -6,6 +6,7 @@
   date: datetime(year: 2026, month: 10, day: 12),
   license: link("https://creativecommons.org/licenses/by/4.0/")[CC BY 4.0],
   bibliography: bibliography("ref.yaml"),
+  revision-history: include "revision-history.typ",
 )
 
 #part("Unprivileged Architecture")[
